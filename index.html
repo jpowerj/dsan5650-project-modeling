@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.10.3" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+<meta name="dcterms.date" content="2026-08-10" />
+
+<title>Probabilistic Models of Media (Mis)Trust</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+<!-- htmldependencies:E3FAD763 -->
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: black;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: black;
+background: #E69F0095;
+      }
+</style>
+
+
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <div id="quarto-toc-target"></div>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default toc-left">
+  <div class="quarto-title-banner">
+    <div class="quarto-title column-body">
+      <h1 class="title">Probabilistic Models of Media (Mis)Trust</h1>
+            <p class="subtitle lead">Final Project, DSAN 5650: Causal Inference for Computational Social Science</p>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author">
+          <div class="quarto-title-meta-heading">Author</div>
+          <div class="quarto-title-meta-heading">Affiliation</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author">Probabilistic Modeler </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Georgetown University
+                      </p>
+                  </div>
+                    </div>
+        
+        <div class="quarto-title-meta">
+
+                      
+                <div>
+            <div class="quarto-title-meta-heading">Published</div>
+            <div class="quarto-title-meta-contents">
+              <p class="date">August 10, 2026</p>
+            </div>
+          </div>
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      </div>
+    </div>
+
+    <div>
+      <div class="abstract">
+        <div class="block-title">Abstract</div>
+        <p>Testing 123</p>
+      </div>
+    </div>
+
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header>
+
+  
+
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+  <li><a href="#conclusion" id="toc-conclusion">Conclusion</a></li>
+  <li><a href="#references" id="toc-references">References</a></li>
+  </ul>
+</nav>
+<section id="introduction" class="level2">
+<h2>Introduction</h2>
+<p>I shall deal only briefly with an important variant of the seesaw coup. This is a coup made by members of a group formerly well represented in the state apparatus in order to retrieve their advantageous but declining position.</p>
+<p>Rare is the regime in Asia or Africa that is able to accord position and influence to various ethnic groups in proportions generally acceptable across group lines. Most governments are ethnically unbalanced. They slight some groups; they lean toward others. Many such governments, moreover, ride to power on promises to curtail the influence or privilege of particular ethnic groups.</p>
+<p>A group so excluded from its former position is unlikely to accept the exclusion equanimously. Where such a group is heavily represented in the officer corps, the regime is confronted with a difficult choice. To purge these officers is to increase ethnic discontent, perhaps to bring on a coup before the purging is complete, and to risk spreading discontent among other officers who sense that careers abruptly ended today for one reason can be equally abruptly ended tomorrow for other reasons. On the other hand, to permit a potential focus of military discontent to remain unchecked is also to risk a coup.</p>
+<p>A coup to retrieve the lost or declining position of an ethnic group is not inevitable. Such a coup depends on a particular configuration of circumstances.</p>
+<p>In the first place, groups that have recently been excluded from a position of preeminence are more likely to be advanced ethnic groups: disproportionately educated, urban, willing to migrate from their home area, and stereotyped as diligent, industrious, energetic, and intelligent. Typically, these groups are disproportionately represented in educational institutions, in commerce and the professions, and in the civil service. But such groups are not necessarily significantly represented in the officer corps–unless educational prerequisites for entry into military academies have been enforced and the military has been a career affording salary and status at least roughly comparable to civilian government service. Where these conditions are met, representation of an excluded group in the officer corps may be sufficient to make a retrieval coup possible.</p>
+<p>Moreover, retrieval coups are mixed-motive coups, because a declining or excluded group is unlikely to be able to bring off a coup all by itself. For a retrieval coup to occur, officers who are not members of that ethnic group must also be convinced that the exclusion threatens to affect their own interests, or they must have their own reasons for turning against the regime.</p>
+<p>Two coups in Ghana illustrate these points. Both involved a complex mix of motives, in which ethnicity played an important but not overriding role.</p>
+<p>As we have seen, the Ghanaian officer corps was drawn from the well-educated Ewe, Ga, and Fanti groups. Nkrumah’s electoral support was also somewhat skewed. His Convention People’s Party had been out-polled in 1956 by the National Liberation Movement in Ashanti and by the Northern People’s Party in the North. The Ewe areas of the Trans Volta were divided between the CPP and the Togoland Congress. No sooner had independence been achieved than the regime was also confronted with an Ewe separatist movement in the Trans Volta region and a militant Ga movement in Accra.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Nkrumah moved to suppress the dissidents, and the suppression increased after he learned of conspiratorial approaches from opposition politicians to army officers, principally of Ga and Ewe origin, in 1958. A shift in officer recruitment away from Ga and Ewe was the result of these events.</p>
+<p>Nkrumah offended his officers by tampering with their prerogatives. He introduced party cells in the army, established a President’s Own Guard Regiment as a counterweight to the regular army, then favored the Regiment in budgetary allocations, and played favorites in certain conspicuous appointments and dismissals of officers.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>Nkrumah’s policy of using his emergency powers against opposition ethnic leaders only increased ethnic grievances. The Ashanti did not forget their humiliation at Nkrumah’s hand. They complained of the domination of Ashanti by the CPP’s Southern leaders.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> An advanced group from an unusually poor region, the Ewe were particularly dependent on government largess for their survival. Bitter at Nkrumah’s punitive policy and the force with which he put down their rebellion, the Ewe never accommodated themselves to CPP rule. Nor did Nkrumah trust them; not a single Ewe was appointed to his cabinet after 1961. The three men who first plotted Nkrumah’s overthrow in 1966 were all Ewe. Of the eight members of the National Liberation Council (NLC) established after the coup, three were Ewe and two were Ga.</p>
+<p>The prominent role of Ewe in the coup and in the NLC gave rise to fears of Ewe favoritism. During the NLC period, 1966—69, various Akan groups—including some, such as the Ashanti and Fanti, that earlier had been mutually suspicious—began to forge close links. What gave them a new sense of cohesion was the alleged threat from the Ewe. Akans tended to see the NLC as dominated by the Ewe and Ga.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> When a countercoup failed in 1967, taking the lives of three officers, all of them Ewe, the NLC felt obliged to deny the “wicked rumor” that the move had been “planned by Ashantis and Fantis against Gas and Ewes.”<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>The prospect of a return to civilian rule only deepened cleavages. Some of the principal NLC members had ties to civilian politicians of the same ethnic group. The leading NLC Ewe, John Harlley and A. K. Deku, were close to the prominent Ewe leader K. Gbedemah. General J. A. Ankrah and police commissioner John Nunoo, both Ga, were involved in efforts to form a political party based on Ga support. Brigadier A. A. Afrifa, an Ashanti, was closely linked to the Ashanti politician K. A. Busia. As the end of military rule grew nearer, the Akan-Ewe rivalry, epitomized by the antipathy between Afrifa and Harlley, was expressed in official actions impinging on the political interests of the respective groups. Ewe officers obtained, under threat of force, revocation of a decree issued by Afrifa that would have banned from partisan activity a large number of former CPP politicians, including Gbedemah.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> The removal of the ban on Gbedemah fanned anti-Ewe sentiment. Shortly before the 1969 election, the NLC removed two Ewe brigadiers from troop commands.</p>
+<p>When civilian politics was restored in 1969, parties quickly crystallized along ethnic lines. The rivalry of Harlley and Afrifa was supplanted by the rivalry of their respective civilian ethnic kinsmen, Gbedemah and Busia. Gbedemah’s party appealed principally to the Ewe. Nearly every other area voted for Busia’s Progress Party, in large part due to “fears of Ewe domination of national government…”<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p>Busia in office proved distinctly unfriendly to the Ewe. No Ewe served in his cabinet, and legal action was even taken to unseat Gbedemah. The list of 568 civil servants and policemen dismissed in 1970 contained more than a fair share of Ewe names, and Ewe were pushed out of command positions in the armed forces. By the end of 1971, only one Ewe was still serving in a senior army position.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p>Once again, Ewe officers moved to retrieve their position. This they did, as before, in conjunction with others acting (as no doubt they themselves were) out of diverse motives. Two of the four organizers of the 1972 coup were Ewe majors. Reduced military budgets, inequity in promotions due to participation or nonparticipation in the coup against Nkrumah, and civilian interference in army affairs—including punitive action taken against Ewe officers—all appear to have had a part in the decision to depose Busia’s government. Most conspicuously overrepresented in the new government’s National Redemption Council (NRC) were two identifiable groups: officers whose careers had stagnated in the post-Nkrumah period and Ewe officers. At the outset, almost half of the council was Ewe.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<p>A somewhat similar case could be made for the attempted coup in Sri Lanka in 1962, which followed discriminatory action against Tamils and Christians.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> Both followed expansions of political participation unaccompanied by drastic change in the composition of the officer corps. Both regimes threatened the officer corps on ethnic, social class, and organizational fronts simultaneously. The concatenation of these threats linked officers who had otherwise disparate interests, causing them to see the regimes’ actions as part of a coherent pattern of malevolent conduct. The essential ingredient of a retrieval coup is simultaneous regime action that facilitates the creation of the interethnic military coalition. For this purpose, the combination of ethnic discrimination and tampering with military careers is particularly likely to incite officers. Both can be subsumed under the rubric of “favoritism,” which offends the conceptions of merit, order, and regularity that are thought to underlie military recruitment, tenure, and promotion.</p>
+<p>Whereas a full seesaw coup is preceded by polarization of the polity into two antagonistic ethnic clusters, which make mutually exclusive claims on power, the retrieval coup aims merely to restore the former position of a recently excluded group. The retrieval coup occurs in an ethnically less explosive atmosphere, and the coupmakers are typically multiethnic in composition. Ethnic retrieval is the goal for only some of them. In the absence of polarized ethnic equilibrium, then, exclusion of a single ethnic group need not split the army. In fact, it may increase the cohesion of the army and make possible military intervention based on a coalescence of differing motives.</p>
+<p>Cohesion sufficient to make a coup, however, does not assure enough cohesion to maintain interethnic alliances once the coup is made. After both Ghanaian coups, reinclusion of the Ewe was aborted. Shortly after the 1966 coup, Brigadier Afrifa propounded the historically dubious proposition that the Ashanti and the Ewe were traditional allies.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> As we have seen, it was not long before Ewe and Ashanti members of the NLC fell out among themselves. By 1969, the Ewe were left to contest the elections practically alone in their own party, and they were decisively defeated. A more serious split followed the 1972 coup. Reflecting widespread distaste for the anti-Ewe policy of the Busia regime, Colonel Acheampong said the coup was made partly to combat “the politics of tribalism.”<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> Again, however, the military council divided along Akan-Ewe lines, Akan expressing discontent at what they felt was inordinate Ewe influence in the NRC. This coincided with the reemergence of Ewe separatism, which ultimately received some support from Togo. By 1975, the pressures on Acheampong to push the Ewe out were apparently quite strong—some sources speak of an ultimatum from senior Akan officers—and Acheampong purged the leading Ewe officers who had conspired with him in 1972. Some months later, a number of Ewe former officers and N.C.O.s were arrested and convicted of plotting a coup.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> This was followed by another unsuccessful Ewe plot in 1976. By this time, the Ewe were right back where they were under the Busia regime: politically excluded despite their significant representation in the officer corps.</p>
+<p>In the three and a half years from July 1978 through December 1981, Ghana experienced four more changes of government, three of them through coups. In these kaleidoscopic events, the position of the Ewe was not the principal issue, but the issue did not go away either. Jerry Rawlings, who led coups in 1979 and 1981, is an Ewe. The first of his regimes was disproportionately composed of Ga and Ewe, and it seemed to engender resistance on these grounds among Akans. The elected government that succeeded it embarked on a campaign against Rawlings and the leading Ewe members of his council, “fueling Ewe discontents to new heights.”<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> After Rawlings’ second coup, in 1981, he cut back on the prominence of the Ewe, but, by some accounts, Akan-Ewe conflicts nonetheless proceeded apace.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></p>
+<p>The Ewe thus tend to find themselves sharing power when the military takes power and excluded soon after. Periods of civilian rule generally leave the Ewe unrepresented, while periods of military rule serve to sharpen political differences between the Ewe and the various Akan groups. Ghanaian governments seem chronically unable to keep both Ewe and Akans included on a stable basis.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2>Conclusion</h2>
+</section>
+<section id="references" class="level2">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-afrifa_ghana_1966" class="csl-entry" role="listitem">
+Afrifa, Akwasi Amankwaa. 1966. <em><a href="https://books.google.com?id=5IQhAAAAMAAJ">The <span>Ghana Coup</span>, 24th <span>February</span> 1966</a></em>. Cass.
+</div>
+<div id="ref-austin_politicians_1975" class="csl-entry" role="listitem">
+Austin, Dennis, and Robin Luckham. 1975. <em><a href="https://books.google.com?id=oa3rAgAAQBAJ">Politicians and <span>Soldiers</span> in <span>Ghana</span> 1966-1972</a></em>. Routledge.
+</div>
+<div id="ref-chazan_ethnicity_1982" class="csl-entry" role="listitem">
+Chazan, Naomi. 1982. <span>“<a href="https://doi.org/10.2307/2149995">Ethnicity and <span>Politics</span> in <span>Ghana</span></a>.”</span> <em>Political Science Quarterly</em> 97 (3): 461–85.
+</div>
+<div id="ref-first_barrel_1970" class="csl-entry" role="listitem">
+First, Ruth. 1970. <em><a href="https://books.google.com?id=8P0EAQAAIAAJ">The <span>Barrel</span> of a <span>Gun</span>: <span>Political Power</span> in <span>Africa</span> and the <span>Coup D</span>’état</a></em>. Allen Lane.
+</div>
+<div id="ref-horowitz_coup_1980" class="csl-entry" role="listitem">
+Horowitz, Donald L. 1980. <em><a href="https://books.google.com?id=ZbP_AwAAQBAJ">Coup <span>Theories</span> and <span>Officers</span>’ <span>Motives</span>: <span>Sri Lanka</span> in <span>Comparative Perspective</span></a></em>. Princeton University Press.
+</div>
+<div id="ref-leys_politics_1969" class="csl-entry" role="listitem">
+Leys, Colin. 1969. <em><a href="https://books.google.com?id=FkcJbkpXufYC">Politics and <span>Change</span> in <span>Developing Countries</span>: <span>Studies</span> in the <span>Theory</span> and <span>Practice</span> of <span>Development</span></a></em>. Cambridge University Press.
+</div>
+<div id="ref-smock_politics_1975" class="csl-entry" role="listitem">
+Smock, David R., and Audrey C. Smock. 1975. <em><a href="https://doi.org/10.2307/2064848">The <span>Politics</span> of <span>Pluralism</span>: <span>A Comparative Study</span> of <span>Lebanon</span> and <span>Ghana</span>.</a></em>
+</div>
+<div id="ref-welch_soldier_1970" class="csl-entry" role="listitem">
+Welch, Claude Emerson. 1970. <em><a href="https://books.google.com?id=xAC5AAAAIAAJ">Soldier and <span>State</span> in <span>Africa</span>: A <span>Comparative Analysis</span> of <span>Military Intervention</span> and <span>Political Change</span></a></em>. Northwestern University Press.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>See <span class="citation" data-cites="smock_politics_1975">Smock and Smock (<a href="#ref-smock_politics_1975" role="doc-biblioref">1975</a>)</span>, 70.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><span class="citation" data-cites="first_barrel_1970">First (<a href="#ref-first_barrel_1970" role="doc-biblioref">1970</a>)</span>, 197-200; <span class="citation" data-cites="leys_politics_1969">Leys (<a href="#ref-leys_politics_1969" role="doc-biblioref">1969</a>)</span>, 235.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><span class="citation" data-cites="welch_soldier_1970">Welch (<a href="#ref-welch_soldier_1970" role="doc-biblioref">1970</a>)</span>, 165.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><span class="citation" data-cites="smock_politics_1975">Smock and Smock (<a href="#ref-smock_politics_1975" role="doc-biblioref">1975</a>)</span>, 203-205, 240-241.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Quoted in <span class="citation" data-cites="leys_politics_1969">Leys (<a href="#ref-leys_politics_1969" role="doc-biblioref">1969</a>)</span>, 243; <span class="citation" data-cites="first_barrel_1970">First (<a href="#ref-first_barrel_1970" role="doc-biblioref">1970</a>)</span>, 403.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><span class="citation" data-cites="first_barrel_1970">First (<a href="#ref-first_barrel_1970" role="doc-biblioref">1970</a>)</span>, 405; <span class="citation" data-cites="welch_soldier_1970">Welch (<a href="#ref-welch_soldier_1970" role="doc-biblioref">1970</a>)</span>, 200.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><span class="citation" data-cites="welch_soldier_1970">Welch (<a href="#ref-welch_soldier_1970" role="doc-biblioref">1970</a>)</span>, 220.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p><span class="citation" data-cites="smock_politics_1975">Smock and Smock (<a href="#ref-smock_politics_1975" role="doc-biblioref">1975</a>)</span>, 246-247; <span class="citation" data-cites="austin_politicians_1975">Austin and Luckham (<a href="#ref-austin_politicians_1975" role="doc-biblioref">1975</a>)</span>, 304; Philippe Decraene, “Ghana Coup,” <em>Le Monde</em> (English ed.), Jan 22, 1972.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p><span class="citation" data-cites="austin_politicians_1975">Austin and Luckham (<a href="#ref-austin_politicians_1975" role="doc-biblioref">1975</a>)</span>, 308-309, 312n18.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p><span class="citation" data-cites="horowitz_coup_1980">Horowitz (<a href="#ref-horowitz_coup_1980" role="doc-biblioref">1980</a>)</span>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><span class="citation" data-cites="afrifa_ghana_1966">Afrifa (<a href="#ref-afrifa_ghana_1966" role="doc-biblioref">1966</a>)</span>, 40.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Quoted in <span class="citation" data-cites="smock_politics_1975">Smock and Smock (<a href="#ref-smock_politics_1975" role="doc-biblioref">1975</a>)</span>, 249.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>For these events, see Legum, ed., <em>Africa Contemporary Record, 1975-76</em>, p. B694; <em>West Africa</em>, Oct. 20, 1975, p. 1257; <em>ibid.</em>, Oct. 27, 1975, p. 1287; <em>ibid.</em>, Dec. 1, 1975, p. 1460; <em>ibid.</em>, Jan. 5, 1976, p. 21; <em>ibid.</em>, July 12, 1976, p. 981.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p><span class="citation" data-cites="chazan_ethnicity_1982">Chazan (<a href="#ref-chazan_ethnicity_1982" role="doc-biblioref">1982</a>)</span>, 461-485, at 483.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p><em>ibid.</em><a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main>
+<!-- /main column -->
+<script id = "quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+</body>
+
+</html>

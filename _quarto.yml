@@ -1,0 +1,13 @@
+project:
+  type: manuscript
+  output-dir: docs
+
+manuscript:
+  article: index.qmd
+  # code-links: repo
+
+format:
+  html:
+    toc: true
+    css: "./style.css"
+  pdf: default

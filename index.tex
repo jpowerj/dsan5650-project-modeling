@@ -1,0 +1,497 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Probabilistic Models of Media (Mis)Trust},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Probabilistic Models of Media (Mis)Trust}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Final Project, DSAN 5650: Causal Inference for Computational
+Social Science}
+\author{Probabilistic Modeler}
+\date{2026-08-10}
+\begin{document}
+\maketitle
+\begin{abstract}
+Testing 123
+\end{abstract}
+
+
+\subsection{Introduction}\label{introduction}
+
+I shall deal only briefly with an important variant of the seesaw coup.
+This is a coup made by members of a group formerly well represented in
+the state apparatus in order to retrieve their advantageous but
+declining position.
+
+Rare is the regime in Asia or Africa that is able to accord position and
+influence to various ethnic groups in proportions generally acceptable
+across group lines. Most governments are ethnically unbalanced. They
+slight some groups; they lean toward others. Many such governments,
+moreover, ride to power on promises to curtail the influence or
+privilege of particular ethnic groups.
+
+A group so excluded from its former position is unlikely to accept the
+exclusion equanimously. Where such a group is heavily represented in the
+officer corps, the regime is confronted with a difficult choice. To
+purge these officers is to increase ethnic discontent, perhaps to bring
+on a coup before the purging is complete, and to risk spreading
+discontent among other officers who sense that careers abruptly ended
+today for one reason can be equally abruptly ended tomorrow for other
+reasons. On the other hand, to permit a potential focus of military
+discontent to remain unchecked is also to risk a coup.
+
+A coup to retrieve the lost or declining position of an ethnic group is
+not inevitable. Such a coup depends on a particular configuration of
+circumstances.
+
+In the first place, groups that have recently been excluded from a
+position of preeminence are more likely to be advanced ethnic groups:
+disproportionately educated, urban, willing to migrate from their home
+area, and stereotyped as diligent, industrious, energetic, and
+intelligent. Typically, these groups are disproportionately represented
+in educational institutions, in commerce and the professions, and in the
+civil service. But such groups are not necessarily significantly
+represented in the officer corps--unless educational prerequisites for
+entry into military academies have been enforced and the military has
+been a career affording salary and status at least roughly comparable to
+civilian government service. Where these conditions are met,
+representation of an excluded group in the officer corps may be
+sufficient to make a retrieval coup possible.
+
+Moreover, retrieval coups are mixed-motive coups, because a declining or
+excluded group is unlikely to be able to bring off a coup all by itself.
+For a retrieval coup to occur, officers who are not members of that
+ethnic group must also be convinced that the exclusion threatens to
+affect their own interests, or they must have their own reasons for
+turning against the regime.
+
+Two coups in Ghana illustrate these points. Both involved a complex mix
+of motives, in which ethnicity played an important but not overriding
+role.
+
+As we have seen, the Ghanaian officer corps was drawn from the
+well-educated Ewe, Ga, and Fanti groups. Nkrumah's electoral support was
+also somewhat skewed. His Convention People's Party had been out-polled
+in 1956 by the National Liberation Movement in Ashanti and by the
+Northern People's Party in the North. The Ewe areas of the Trans Volta
+were divided between the CPP and the Togoland Congress. No sooner had
+independence been achieved than the regime was also confronted with an
+Ewe separatist movement in the Trans Volta region and a militant Ga
+movement in Accra.\footnote{See Smock and Smock (1975), 70.} Nkrumah
+moved to suppress the dissidents, and the suppression increased after he
+learned of conspiratorial approaches from opposition politicians to army
+officers, principally of Ga and Ewe origin, in 1958. A shift in officer
+recruitment away from Ga and Ewe was the result of these events.
+
+Nkrumah offended his officers by tampering with their prerogatives. He
+introduced party cells in the army, established a President's Own Guard
+Regiment as a counterweight to the regular army, then favored the
+Regiment in budgetary allocations, and played favorites in certain
+conspicuous appointments and dismissals of officers.\footnote{First
+  (1970), 197-200; Leys (1969), 235.}
+
+Nkrumah's policy of using his emergency powers against opposition ethnic
+leaders only increased ethnic grievances. The Ashanti did not forget
+their humiliation at Nkrumah's hand. They complained of the domination
+of Ashanti by the CPP's Southern leaders.\footnote{Welch (1970), 165.}
+An advanced group from an unusually poor region, the Ewe were
+particularly dependent on government largess for their survival. Bitter
+at Nkrumah's punitive policy and the force with which he put down their
+rebellion, the Ewe never accommodated themselves to CPP rule. Nor did
+Nkrumah trust them; not a single Ewe was appointed to his cabinet after
+1961. The three men who first plotted Nkrumah's overthrow in 1966 were
+all Ewe. Of the eight members of the National Liberation Council (NLC)
+established after the coup, three were Ewe and two were Ga.
+
+The prominent role of Ewe in the coup and in the NLC gave rise to fears
+of Ewe favoritism. During the NLC period, 1966---69, various Akan
+groups---including some, such as the Ashanti and Fanti, that earlier had
+been mutually suspicious---began to forge close links. What gave them a
+new sense of cohesion was the alleged threat from the Ewe. Akans tended
+to see the NLC as dominated by the Ewe and Ga.\footnote{Smock and Smock
+  (1975), 203-205, 240-241.} When a countercoup failed in 1967, taking
+the lives of three officers, all of them Ewe, the NLC felt obliged to
+deny the ``wicked rumor'' that the move had been ``planned by Ashantis
+and Fantis against Gas and Ewes.''\footnote{Quoted in Leys (1969), 243;
+  First (1970), 403.}
+
+The prospect of a return to civilian rule only deepened cleavages. Some
+of the principal NLC members had ties to civilian politicians of the
+same ethnic group. The leading NLC Ewe, John Harlley and A. K. Deku,
+were close to the prominent Ewe leader K. Gbedemah. General J. A. Ankrah
+and police commissioner John Nunoo, both Ga, were involved in efforts to
+form a political party based on Ga support. Brigadier A. A. Afrifa, an
+Ashanti, was closely linked to the Ashanti politician K. A. Busia. As
+the end of military rule grew nearer, the Akan-Ewe rivalry, epitomized
+by the antipathy between Afrifa and Harlley, was expressed in official
+actions impinging on the political interests of the respective groups.
+Ewe officers obtained, under threat of force, revocation of a decree
+issued by Afrifa that would have banned from partisan activity a large
+number of former CPP politicians, including Gbedemah.\footnote{First
+  (1970), 405; Welch (1970), 200.} The removal of the ban on Gbedemah
+fanned anti-Ewe sentiment. Shortly before the 1969 election, the NLC
+removed two Ewe brigadiers from troop commands.
+
+When civilian politics was restored in 1969, parties quickly
+crystallized along ethnic lines. The rivalry of Harlley and Afrifa was
+supplanted by the rivalry of their respective civilian ethnic kinsmen,
+Gbedemah and Busia. Gbedemah's party appealed principally to the Ewe.
+Nearly every other area voted for Busia's Progress Party, in large part
+due to ``fears of Ewe domination of national
+government\ldots{}''\footnote{Welch (1970), 220.}
+
+Busia in office proved distinctly unfriendly to the Ewe. No Ewe served
+in his cabinet, and legal action was even taken to unseat Gbedemah. The
+list of 568 civil servants and policemen dismissed in 1970 contained
+more than a fair share of Ewe names, and Ewe were pushed out of command
+positions in the armed forces. By the end of 1971, only one Ewe was
+still serving in a senior army position.\footnote{Smock and Smock
+  (1975), 246-247; Austin and Luckham (1975), 304; Philippe Decraene,
+  ``Ghana Coup,'' \emph{Le Monde} (English ed.), Jan 22, 1972.}
+
+Once again, Ewe officers moved to retrieve their position. This they
+did, as before, in conjunction with others acting (as no doubt they
+themselves were) out of diverse motives. Two of the four organizers of
+the 1972 coup were Ewe majors. Reduced military budgets, inequity in
+promotions due to participation or nonparticipation in the coup against
+Nkrumah, and civilian interference in army affairs---including punitive
+action taken against Ewe officers---all appear to have had a part in the
+decision to depose Busia's government. Most conspicuously
+overrepresented in the new government's National Redemption Council
+(NRC) were two identifiable groups: officers whose careers had stagnated
+in the post-Nkrumah period and Ewe officers. At the outset, almost half
+of the council was Ewe.\footnote{Austin and Luckham (1975), 308-309,
+  312n18.}
+
+A somewhat similar case could be made for the attempted coup in Sri
+Lanka in 1962, which followed discriminatory action against Tamils and
+Christians.\footnote{Horowitz (1980).} Both followed expansions of
+political participation unaccompanied by drastic change in the
+composition of the officer corps. Both regimes threatened the officer
+corps on ethnic, social class, and organizational fronts simultaneously.
+The concatenation of these threats linked officers who had otherwise
+disparate interests, causing them to see the regimes' actions as part of
+a coherent pattern of malevolent conduct. The essential ingredient of a
+retrieval coup is simultaneous regime action that facilitates the
+creation of the interethnic military coalition. For this purpose, the
+combination of ethnic discrimination and tampering with military careers
+is particularly likely to incite officers. Both can be subsumed under
+the rubric of ``favoritism,'' which offends the conceptions of merit,
+order, and regularity that are thought to underlie military recruitment,
+tenure, and promotion.
+
+Whereas a full seesaw coup is preceded by polarization of the polity
+into two antagonistic ethnic clusters, which make mutually exclusive
+claims on power, the retrieval coup aims merely to restore the former
+position of a recently excluded group. The retrieval coup occurs in an
+ethnically less explosive atmosphere, and the coupmakers are typically
+multiethnic in composition. Ethnic retrieval is the goal for only some
+of them. In the absence of polarized ethnic equilibrium, then, exclusion
+of a single ethnic group need not split the army. In fact, it may
+increase the cohesion of the army and make possible military
+intervention based on a coalescence of differing motives.
+
+Cohesion sufficient to make a coup, however, does not assure enough
+cohesion to maintain interethnic alliances once the coup is made. After
+both Ghanaian coups, reinclusion of the Ewe was aborted. Shortly after
+the 1966 coup, Brigadier Afrifa propounded the historically dubious
+proposition that the Ashanti and the Ewe were traditional
+allies.\footnote{Afrifa (1966), 40.} As we have seen, it was not long
+before Ewe and Ashanti members of the NLC fell out among themselves. By
+1969, the Ewe were left to contest the elections practically alone in
+their own party, and they were decisively defeated. A more serious split
+followed the 1972 coup. Reflecting widespread distaste for the anti-Ewe
+policy of the Busia regime, Colonel Acheampong said the coup was made
+partly to combat ``the politics of tribalism.''\footnote{Quoted in Smock
+  and Smock (1975), 249.} Again, however, the military council divided
+along Akan-Ewe lines, Akan expressing discontent at what they felt was
+inordinate Ewe influence in the NRC. This coincided with the reemergence
+of Ewe separatism, which ultimately received some support from Togo. By
+1975, the pressures on Acheampong to push the Ewe out were apparently
+quite strong---some sources speak of an ultimatum from senior Akan
+officers---and Acheampong purged the leading Ewe officers who had
+conspired with him in 1972. Some months later, a number of Ewe former
+officers and N.C.O.s were arrested and convicted of plotting a
+coup.\footnote{For these events, see Legum, ed., \emph{Africa
+  Contemporary Record, 1975-76}, p.~B694; \emph{West Africa}, Oct.~20,
+  1975, p.~1257; \emph{ibid.}, Oct.~27, 1975, p.~1287; \emph{ibid.},
+  Dec.~1, 1975, p.~1460; \emph{ibid.}, Jan.~5, 1976, p.~21;
+  \emph{ibid.}, July 12, 1976, p.~981.} This was followed by another
+unsuccessful Ewe plot in 1976. By this time, the Ewe were right back
+where they were under the Busia regime: politically excluded despite
+their significant representation in the officer corps.
+
+In the three and a half years from July 1978 through December 1981,
+Ghana experienced four more changes of government, three of them through
+coups. In these kaleidoscopic events, the position of the Ewe was not
+the principal issue, but the issue did not go away either. Jerry
+Rawlings, who led coups in 1979 and 1981, is an Ewe. The first of his
+regimes was disproportionately composed of Ga and Ewe, and it seemed to
+engender resistance on these grounds among Akans. The elected government
+that succeeded it embarked on a campaign against Rawlings and the
+leading Ewe members of his council, ``fueling Ewe discontents to new
+heights.''\footnote{Chazan (1982), 461-485, at 483.} After Rawlings'
+second coup, in 1981, he cut back on the prominence of the Ewe, but, by
+some accounts, Akan-Ewe conflicts nonetheless proceeded
+apace.\footnote{\emph{ibid.}}
+
+The Ewe thus tend to find themselves sharing power when the military
+takes power and excluded soon after. Periods of civilian rule generally
+leave the Ewe unrepresented, while periods of military rule serve to
+sharpen political differences between the Ewe and the various Akan
+groups. Ghanaian governments seem chronically unable to keep both Ewe
+and Akans included on a stable basis.
+
+\subsection{Conclusion}\label{conclusion}
+
+\subsection{References}\label{references}
+
+\protect\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-afrifa_ghana_1966}
+Afrifa, Akwasi Amankwaa. 1966.
+\emph{\href{https://books.google.com?id=5IQhAAAAMAAJ}{The {Ghana Coup},
+24th {February} 1966}}. Cass.
+
+\bibitem[\citeproctext]{ref-austin_politicians_1975}
+Austin, Dennis, and Robin Luckham. 1975.
+\emph{\href{https://books.google.com?id=oa3rAgAAQBAJ}{Politicians and
+{Soldiers} in {Ghana} 1966-1972}}. Routledge.
+
+\bibitem[\citeproctext]{ref-chazan_ethnicity_1982}
+Chazan, Naomi. 1982. {``\href{https://doi.org/10.2307/2149995}{Ethnicity
+and {Politics} in {Ghana}}.''} \emph{Political Science Quarterly} 97
+(3): 461--85.
+
+\bibitem[\citeproctext]{ref-first_barrel_1970}
+First, Ruth. 1970.
+\emph{\href{https://books.google.com?id=8P0EAQAAIAAJ}{The {Barrel} of a
+{Gun}: {Political Power} in {Africa} and the {Coup D}'état}}. Allen
+Lane.
+
+\bibitem[\citeproctext]{ref-horowitz_coup_1980}
+Horowitz, Donald L. 1980.
+\emph{\href{https://books.google.com?id=ZbP_AwAAQBAJ}{Coup {Theories}
+and {Officers}' {Motives}: {Sri Lanka} in {Comparative Perspective}}}.
+Princeton University Press.
+
+\bibitem[\citeproctext]{ref-leys_politics_1969}
+Leys, Colin. 1969.
+\emph{\href{https://books.google.com?id=FkcJbkpXufYC}{Politics and
+{Change} in {Developing Countries}: {Studies} in the {Theory} and
+{Practice} of {Development}}}. Cambridge University Press.
+
+\bibitem[\citeproctext]{ref-smock_politics_1975}
+Smock, David R., and Audrey C. Smock. 1975.
+\emph{\href{https://doi.org/10.2307/2064848}{The {Politics} of
+{Pluralism}: {A Comparative Study} of {Lebanon} and {Ghana}.}}
+
+\bibitem[\citeproctext]{ref-welch_soldier_1970}
+Welch, Claude Emerson. 1970.
+\emph{\href{https://books.google.com?id=xAC5AAAAIAAJ}{Soldier and
+{State} in {Africa}: A {Comparative Analysis} of {Military Intervention}
+and {Political Change}}}. Northwestern University Press.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}
