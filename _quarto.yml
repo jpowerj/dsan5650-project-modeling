@@ -4,7 +4,12 @@ project:
 
 manuscript:
   article: index.qmd
-  code-links: repo
+  code-links:
+    - repo
+    - text: Use This Template
+      icon: box-arrow-up-right
+      href: https://github.com/new?template_name=dsan5650-project-modeling&template_owner=jpowerj
+      target: _blank
 
 format:
   html:
